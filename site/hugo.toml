@@ -1,7 +1,7 @@
 baseurl = "/"
-languageCode = "en-us"
-languageLang = "en"
-title = "Kaldi"
+languageCode = "de-de"
+languageLang = "de"
+title = "Kraftwerk.social"
 
 # RSS, categories and tags disabled for an easy start
 # See configuration options for more details: 
@@ -10,3 +10,5 @@ disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
 [params]
 images = ["img/og-image.jpg"]
+
+theme = ["PaperMod"]
