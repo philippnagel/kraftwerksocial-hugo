@@ -1,17 +1,27 @@
-<!doctype html>
-<html lang="{{ $.Site.Language.Lang }}">
-  {{ partial "head" . }}
-  <body class="sans-serif">
+{{- if lt hugo.Version "0.112.4" }}
+{{- errorf "=> hugo v0.112.4 or greater is required for hugo-PaperMod to build " }}
+{{- end -}}
 
-    {{ block "header" . }}{{ partial "nav" . }}{{end}}
+<!DOCTYPE html>
+<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
 
-    {{ block "main" . }}{{ end }}
+<head>
+    {{- partial "head.html" . }}
+</head>
 
-    {{ block "footer" . }}{{ partial "footer" . }}{{end}}
+<body class="
+{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
+{{- print "list" -}}
+{{- end -}}
+{{- if eq site.Params.defaultTheme `dark` -}}
+{{- print " dark" }}
+{{- end -}}
+" id="top">
+    {{- partialCached "header.html" . .Page -}}
+    <main class="main">
+        {{- block "main" . }}{{ end }}
+    </main>
+    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+</body>
 
-    {{ $script := .Site.Data.webpack.main }}
-    {{ with $script.js }}
-      <script src="{{ relURL . }}"></script>
-    {{ end }}
-  </body>
 </html>

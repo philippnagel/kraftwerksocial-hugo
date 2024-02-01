@@ -1,12 +1,12 @@
 baseurl = "/"
 languageCode = "de-de"
 languageLang = "de"
-title = "Kraftwerk.social"
+title = "kraftwerk.social"
 
 # RSS, categories and tags disabled for an easy start
 # See configuration options for more details: 
 # https://gohugo.io/getting-started/configuration/#toml-configuration
-disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
+disableKinds = ["RSS", "taxonomy"]
 
 [params]
 images = ["img/og-image.jpg"]
